@@ -1,17 +1,20 @@
-from fastapi import FastAPI, HTTPException # type: ignore
-from pydantic import BaseModel # type: ignore
-import joblib # type: ignore
-import pandas as pd # type: ignore
-import numpy as np # type: ignore
+import os
+import joblib  # type: ignore
+import pandas as pd  # type: ignore
+import numpy as np  # type: ignore
+from fastapi import FastAPI, HTTPException  # type: ignore
+from pydantic import BaseModel  # type: ignore
+import uvicorn
 
 app = FastAPI()
 
 # Load the trained model and scaler
 try:
-    model = joblib.load('best_model.joblib')
-    scaler = joblib.load('scaler.joblib')
+    model = joblib.load("best_model.joblib")
+    scaler = joblib.load("scaler.joblib")
 except Exception as e:
-    raise HTTPException(status_code=500, detail=f"Failed to load model or scaler: {str(e)}")
+    raise RuntimeError(f"Failed to load model or scaler: {str(e)}")
+
 
 class InputData(BaseModel):
     feature1: float
@@ -45,6 +48,7 @@ class InputData(BaseModel):
     feature29: float
     feature30: float
 
+
 @app.post("/predict")
 async def predict(input_data: InputData):
     try:
@@ -73,3 +77,8 @@ async def predict(input_data: InputData):
         raise e
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 8000))  # Render assigns a dynamic port
+    uvicorn.run(app, host="0.0.0.0", port=port)
