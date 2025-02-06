@@ -80,5 +80,5 @@ async def predict(input_data: InputData):
 
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 8000))  # Render assigns a dynamic port
+    port = int(os.getenv("PORT", 8000))  # Use Render's assigned port
     uvicorn.run(app, host="0.0.0.0", port=port)
