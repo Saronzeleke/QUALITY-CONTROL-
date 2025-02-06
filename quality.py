@@ -47,7 +47,9 @@ class InputData(BaseModel):
     feature28: float
     feature29: float
     feature30: float
-
+@app.get("https://quality-control-1.onrender.com")  # Test home route
+def read_root():
+    return {"message": "API is working!"}
 
 @app.post("/predict")
 async def predict(input_data: InputData):
