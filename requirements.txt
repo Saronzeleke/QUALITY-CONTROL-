@@ -3,3 +3,4 @@ pydantic
 joblib
 pandas
 numpy
+uvicorn
