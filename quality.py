@@ -1,8 +1,8 @@
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-import joblib
-import pandas as pd
-import numpy as np
+from fastapi import FastAPI, HTTPException # type: ignore
+from pydantic import BaseModel # type: ignore
+import joblib # type: ignore
+import pandas as pd # type: ignore
+import numpy as np # type: ignore
 
 app = FastAPI()
 
