@@ -4,7 +4,7 @@ import pandas as pd  # type: ignore
 import numpy as np  # type: ignore
 from fastapi import FastAPI, HTTPException  # type: ignore
 from pydantic import BaseModel  # type: ignore
-import uvicorn
+import uvicorn # type: ignore
 
 app = FastAPI()
 
