@@ -1,20 +1,17 @@
-import os
-import joblib  # type: ignore
-import pandas as pd  # type: ignore
-import numpy as np  # type: ignore
-from fastapi import FastAPI, HTTPException  # type: ignore
-from pydantic import BaseModel  # type: ignore
-import uvicorn # type: ignore
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+import joblib
+import pandas as pd
+import numpy as np
 
 app = FastAPI()
 
 # Load the trained model and scaler
 try:
-    model = joblib.load("best_model.joblib")
-    scaler = joblib.load("scaler.joblib")
+    model = joblib.load('best_model.joblib')
+    scaler = joblib.load('scaler.joblib')
 except Exception as e:
-    raise RuntimeError(f"Failed to load model or scaler: {str(e)}")
-
+    raise HTTPException(status_code=500, detail=f"Failed to load model or scaler: {str(e)}")
 
 class InputData(BaseModel):
     feature1: float
@@ -47,9 +44,6 @@ class InputData(BaseModel):
     feature28: float
     feature29: float
     feature30: float
-@app.get("https://quality-control-1.onrender.com")  # Test home route
-def read_root():
-    return {"message": "API is working!"}
 
 @app.post("/predict")
 async def predict(input_data: InputData):
