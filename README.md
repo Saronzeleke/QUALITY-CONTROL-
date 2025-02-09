@@ -1,4 +1,4 @@
-README 
+
 # Quality Control Defect Prediction
 
 ## Project Purpose
@@ -25,8 +25,9 @@ curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json"
 
 API Documentation
 
-# FastAPI automatically generates interactive API documentation. You can access it at: https://quality-control-1
-1.onrender.com/docs and then click the execute  button 
+# FastAPI automatically generates interactive API documentation.
+You can access it at: 
+1.[onrender.com/docs ](https://quality-control-1.onrender.com)and then write https://quality-control-1.onrender.com/docs  and then click the execute  button 
 
  2.Swagger UI: http://127.0.0.1:8000/docs
  3.ReDoc: http://127.0.0.1:8000/redoc
