@@ -1,30 +1,44 @@
- Quality Control Defect Prediction 
+README 
+# Quality Control Defect Prediction
 
-  # Project Purpose
+## Project Purpose
 This project aims to predict whether an item is defective based on multiple features using a machine learning model.
- The goal is to improve the quality control process in manufacturing by identifying defective items early and reducing costs.
 
-1. Clone the Repository
+## Setup Instructions
 
-To get started with the project, clone the repository to your local machine using the following commands:
+### 1. Clone the Repository
+```sh
 git clone https://github.com/Saronzeleke/QUALITY-CONTROL-.git
-
 2. Install Dependencies
+# pip install -r requirements.txt
 
-Ensure you have Python, ancanoda or jupyter notebook installed on your machine. 
-Install the required dependencies using the provided requirements.txt file:
- # pip install -r requirements.txt
 3. Run the FastAPI Server
+Python -m uvicorn quality:app --reload
 
-To run the FastAPI server:
- python -m uvicorn quality:app --reload
-The server will start on http://127.0.0.1:8000.
- 
- # Send the POST request using curl:
+Usage
+Making Predictions
+
+Send a POST request to the /predict endpoint with the feature data.
+Example Request    
+Send the POST request using curl:
 curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json" -d @input_data.json
- # To open the deployed link just go to the  https://quality-control-1.onrender.com then write https://quality-control-1.onrender.com/docs    
- it take you to Fastapi site then just click the defualt it shows the selection then click Try it out  then click the execute button then it shows the prediction.
 
-#Contact
+API Documentation
+
+# FastAPI automatically generates interactive API documentation. You can access it at: https://quality-control-1
+1.onrender.com/docs and then click the execute  button 
+
+ 2.Swagger UI: http://127.0.0.1:8000/docs
+ 3.ReDoc: http://127.0.0.1:8000/redoc
+
+Project Structure
+
+quality.py: The main FastAPI application file.
+quality_control_data.csv: The synthetic dataset used for training the model.
+best_model.joblib and scaler.joblib: Saved model and scaler files.
+requirements.txt: A list of dependencies required for the project.
+input_data.json: Example input data for making predictions.
+
+# Contact
 
 For any questions or issues, please contact sharonkuye369@gmail.com.
